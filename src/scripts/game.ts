@@ -2,12 +2,13 @@ import 'phaser'
 import MainScene from './scenes/mainScene'
 import PreloadScene from './scenes/preloadScene'
 
-const DEFAULT_WIDTH = 400
+const DEFAULT_WIDTH = 500
 const DEFAULT_HEIGHT = 240
+
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
-  backgroundColor: '#6888ff',
+  backgroundColor: 'black',
   render: {
     pixelArt: true,
     roundPixels: true,

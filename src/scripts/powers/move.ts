@@ -31,23 +31,23 @@ export class Move implements Power {
     const { ax, stopSpeed } = this.options
     const velocity = player.body.velocity
     const animSuffix = player.animSuffix
-
+  
     // 移动
     if (cursors.left.isDown) {
-      player.setFlipX(true)
-      player.body.setAccelerationX(-ax - (velocity.x > 0 ? velocity.x * 2 : 0))
-    } else if (cursors.right.isDown) {
-      player.setFlipX(false)
+      player.setFlipX(false) // set flipX to false when moving right
       player.body.setAccelerationX(ax + (velocity.x < 0 ? -velocity.x * 2 : 0))
+    } else if (cursors.right.isDown) {
+      player.setFlipX(true) // set flipX to true when moving left
+      player.body.setAccelerationX(-ax - (velocity.x > 0 ? velocity.x * 2 : 0))
     } else {
       if (Math.abs(velocity.x) < stopSpeed) {
         player.body.setVelocityX(0).setAcceleration(0, 0)
       } else {
-        // 速度在10以上时会有一个减速的效果
+         // 速度在10以上时会有一个减速的效果
         player.body.setAccelerationX((velocity.x < 0 ? 1 : -1) * ax)
       }
     }
-
+  
     // 动画
     if (player.body.blocked.down) {
       if (cursors.down.isDown && player.powers.has(Large)) {
@@ -63,3 +63,6 @@ export class Move implements Power {
     }
   }
 }
+
+
+
